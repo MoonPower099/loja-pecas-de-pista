@@ -1,0 +1,188 @@
+/* Importação da fonte */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* Variáveis de Cores */
+:root {
+    --vermelho-pista: #FF0000; /* Vermelho forte para destaque */
+    --preto-asfalto: #111111; /* Preto profundo */
+    --cinza-asfalto: #333333; /* Detalhes de asfalto */
+    --texto-claro: #FFFFFF;
+}
+
+body {
+    font-family: 'Russo One', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--preto-asfalto);
+    color: var(--texto-claro);
+    /* Adicionar uma leve textura de asfalto no fundo */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA0IDc5LjE2NDg1OCwgMjAyMC8wOC8xOS0xMzo1MDoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNbW09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQzIwMjAgKFdpbmRvd3MpIiB4bXBNbW06SW5zdGFuY2VJRD0ieG1wLmlpZDo0NzI3OEY2RkY3N0MxMTVFODgxMEEwNTQxMzQ4N0I0QyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0NzI3OEY3MEY3N0MxMTVFODgxMEEwNTQxMzQ4N0I0QyI+IDx4bXBNbW06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NzI3OEY2RERFN0MxMTVFODgxMEEwNTQxMzQ4N0I0QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NzI3OEY2RUVFN0MxMTVFODgxMEEwNTQxMzQ4N0I0QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0idyI/Plh/H2sAAAAySURBVHjaYmBgYGBiYvjPQQXj/w9FCP8XGBjEgxAwRgzSg8UeYF4c/jEY/wMYwAADAHP8B6W/8+hFAAAAAElFTkSuQmCC');
+}
+
+/* Efeito da Porsche GT3 RS no topo (Hero Banner) */
+.hero {
+    background-color: var(--cinza-asfalto);
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Garante que a imagem se mova sem rolar a página */
+}
+
+/* Efeito de movimento do carro e fundo de pista/asfalto */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.imgur.com/v8tT9oO.png'); /* *IMPORTANTE:* Substitua pelo URL de uma imagem da Porsche GT3 RS Vermelha */
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.8;
+    z-index: 1;
+    /* Efeito de asfalto em movimento (simulado) */
+    animation: moveAsphalt 20s linear infinite; 
+}
+
+/* Simulação da Porsche GT3 RS Vermelha entrando da direita para a esquerda */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 10%;
+    right: -200px; /* Começa fora da tela, à direita */
+    width: 500px; /* Ajuste o tamanho da imagem */
+    height: 200px;
+    /* IMAGEM: Use uma imagem PNG sem fundo da GT3 RS vermelha! */
+    background-image: url('https://i.imgur.com/G5gW1aM.png'); /* *IMPORTANTE:* Substitua pelo URL de uma imagem PNG da Porsche */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5; /* Garante que o carro fique em cima do fundo */
+    animation: driveIn 6s ease-out forwards; /* O carro "entra" na tela */
+}
+
+/* Animação do carro */
+@keyframes driveIn {
+    from {
+        right: -500px; /* Fora da tela */
+        transform: scale(0.8);
+    }
+    to {
+        right: 50%; /* Posição central na tela */
+        transform: scale(1) translateX(50%);
+    }
+}
+
+/* Animação do fundo (opcional, para dar a sensação de velocidade) */
+@keyframes moveAsphalt {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.logo-container {
+    z-index: 10;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente para o texto */
+    border: 3px solid var(--vermelho-pista);
+}
+
+.logo-container h1 {
+    color: var(--vermelho-pista);
+    margin: 0;
+    font-size: 3em;
+}
+
+/* Seção de Produtos */
+.produtos {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.produtos h2 {
+    color: var(--vermelho-pista);
+    border-bottom: 2px solid var(--cinza-asfalto);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.grade-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card-produto {
+    background-color: var(--cinza-asfalto);
+    border: 1px solid var(--vermelho-pista);
+    padding: 15px;
+    width: 300px; /* Largura padrão */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.card-produto:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.imagem-placeholder {
+    height: 200px;
+    background-color: #000;
+    margin-bottom: 10px;
+    border: 1px dashed var(--vermelho-pista);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.preco {
+    display: block;
+    font-size: 1.5em;
+    color: var(--vermelho-pista);
+    margin: 10px 0;
+}
+
+.btn-comprar {
+    background-color: var(--vermelho-pista);
+    color: var(--texto-claro);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Botão de WhatsApp Flutuante */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* Cor verde do WhatsApp */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.whatsapp-btn img {
+    width: 35px;
+    height: 35px;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--preto-asfalto);
+    border-top: 1px solid var(--vermelho-pista);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    color: var(--cinza-asfalto);
+}
